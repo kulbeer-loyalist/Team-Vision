@@ -15,3 +15,5 @@ Create env
 where it creats test environemnt for specified version and test all the specified task.automated test environment.
 
 <b>5)</b> create the environment init_setup.sh</br> for the environment setup and run it using <h4> bash init_setup.sh</h4> <br/>
+
+<b>6) </b> Writing Logger to print log of our task</b>
