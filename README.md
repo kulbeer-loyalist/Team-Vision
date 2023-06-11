@@ -16,4 +16,9 @@ where it creats test environemnt for specified version and test all the specifie
 
 <b>5)</b> create the environment init_setup.sh</br> for the environment setup and run it using <h4> bash init_setup.sh</h4> <br/>
 
-<b>6) </b> Writing Logger to print log of our task</b>
+<b>6) </b> Writing Logger to print log of our task<br/>
+<b>7) </b> Custom Exception is written <br/>
+<b>8)</b>Entity for the data ingestion<br/>
+<b>9)</b>Path to Logger src/ASLD_step2/logger</br>
+<b>10)</b>Path to Exception src/ASLD_step2/Exception</br>
+<b>11)</b>Path to ream Yaml file and create directories src/ASLD_step2/utils</br>
