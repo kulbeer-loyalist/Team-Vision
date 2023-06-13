@@ -21,4 +21,4 @@ where it creats test environemnt for specified version and test all the specifie
 <b>8)</b>Entity for the data ingestion<br/>
 <b>9)</b>Path to Logger src/ASLD_step2/logger</br>
 <b>10)</b>Path to Exception src/ASLD_step2/Exception</br>
-<b>11)</b>Path to ream Yaml file and create directories src/ASLD_step2/utils</br>
+<b>11)</b>Path to read Yaml file and create directories src/ASLD_step2/utils</br>

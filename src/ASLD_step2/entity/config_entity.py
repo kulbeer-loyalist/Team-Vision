@@ -10,3 +10,7 @@ class DataIngestionConfig:
     unzip_dir: Path
     train_dir: Path
     test_dir: Path
+
+@dataclass(frozen=True)
+class DataValidationConfig:
+    message: str
