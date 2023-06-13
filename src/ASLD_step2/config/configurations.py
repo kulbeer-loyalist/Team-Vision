@@ -6,7 +6,7 @@ and will return path to entity
 """
 from ASLD_step2.constants import *
 from ASLD_step2.utils import read_yaml,create_directories
-from ASLD_step2.entity import DataIngestionConfig,DataValidationConfig
+from ASLD_step2.entity import DataIngestionConfig,DataValidationConfig,DataTransformationConfig
 from ASLD_step2.Exception import ASLDException
 
 import sys
@@ -46,11 +46,31 @@ class Configuration:
 
             return data_ingestion_config  
         except Exception as e:
-            raise ASLDException(e,sys)
+            raise ASLDException(e,sys) from e
         
 
     def get_data_validation_config(self) -> DataValidationConfig:
-        pass    
+        pass
+
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        try:
+            config = self.config.data_transformation
+            #create directories
+            create_directories(config.root_dir)
+            create_directories(config.transformed_train_dir)
+            create_directories(config.transformed_test_dir)
+            create_directories(config.preprocessed_object_file_path)
+
+            data_transformation_config = DataTransformationConfig(
+                root_dir = config.root_dir,
+                transformed_train_dir= config.transformed_train_dir,
+                transformed_test_dir=config.transformed_test_dir,
+                preprocessed_object_file_path = config.preprocessed_object_file_path
+            )
+            return data_transformation_config
+        
+        except Exception as e:
+            raise   ASLDException(e,sys) from e  
 
 
 

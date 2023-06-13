@@ -20,5 +20,4 @@ if __name__ == '__main__':
         main()
         logging.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
     except Exception as e:
-        raise ASLDException(e,sys)
-        raise e
+        raise ASLDException(e,sys) from e

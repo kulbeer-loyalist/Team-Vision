@@ -11,3 +11,10 @@ data_ingestion:
 
 data_validation:
   message: str
+
+
+data_transformation:
+   root_dir: artifacts/data_transformation
+   transformed_train_dir: artifacts/data_transformation/train_dir
+   transformed_test_dir: artifacts/data_transformation/test_dir
+   preprocessed_object_file_path: artifacts/data_transformation 

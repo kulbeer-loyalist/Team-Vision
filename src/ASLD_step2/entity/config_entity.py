@@ -14,3 +14,10 @@ class DataIngestionConfig:
 @dataclass(frozen=True)
 class DataValidationConfig:
     message: str
+
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    transformed_train_dir:Path
+    transformed_test_dir:Path
+    preprocessed_object_file_path: Path
+

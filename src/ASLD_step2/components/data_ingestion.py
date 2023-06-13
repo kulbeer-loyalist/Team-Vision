@@ -42,7 +42,7 @@ class DataIngestion:
                  logging.info(f"File already exists of size: {get_size(Path(self.config.local_data_file))}")  
 
         except Exception as e:
-            raise ASLDException(e,sys)
+            raise ASLDException(e,sys) from e
 
       
 
@@ -62,7 +62,7 @@ class DataIngestion:
             else:
                 logging.info("error in Extraction...")
         except Exception as e:
-            raise ASLDException(e,sys)     
+            raise ASLDException(e,sys) from e
 
 
 
