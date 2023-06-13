@@ -1,0 +1,1 @@
+from ASLD_step2.components.data_ingestion import DataIngestion
