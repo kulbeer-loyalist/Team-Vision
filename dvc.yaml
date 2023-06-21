@@ -1,0 +1,16 @@
+data_ingestion:
+    cmd: python src/ASLD_step2/pipeline/stg1_dataIngestion.py
+    deps:
+      - src/ASLD_step2/pipeline/stg1_dataIngestion.py
+      - configs/config.yaml
+    outs:
+      - artifacts/data_ingestion
+
+  data_validation
+    cmd: python src/ASLD_step2/pipeline/stg2_data_validation.py
+    deps:
+      - src/ASLD_step2/pipeline/stg2_data_validation.py
+      - configs/config.yaml
+    
+    outs:
+      - artifacts/data_validation
