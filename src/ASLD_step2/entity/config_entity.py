@@ -12,12 +12,32 @@ class DataIngestionConfig:
     test_dir: Path
 
 @dataclass(frozen=True)
-class DataValidationConfig:
-    message: str
+class PrepareBaseModelConfig:
+    root_dir: Path
+    base_model_path: Path
+    params_final_output_layers: int
+
 
 @dataclass(frozen=True)
-class DataTransformationConfig:
-    transformed_train_dir:Path
-    transformed_test_dir:Path
-    preprocessed_object_file_path: Path
+class PrepareCallbacksConfig:
+    root_dir: Path
+    tensorboard_root_log_dir: Path
+    checkpoint_model_filepath: Path
 
+@dataclass(frozen=True)
+class TrainingConfig:
+    root_dir: Path
+    trained_model_path: Path
+    base_model_path: Path
+    params_epochs: int
+    x_train: Path
+    y_train: Path
+    x_val: Path
+    y_val: Path
+
+
+@dataclass(frozen=True)
+class EvaluationConfig:
+    path_of_model: Path
+    training_data: Path
+    all_params: dict
