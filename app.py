@@ -80,8 +80,8 @@ def register():
                 print(new_user)
                 db.session.add(new_user)
                 db.session.commit()
-                flash("Account created.", category='success')
-                return redirect(url_for('index'))
+                flash("Account created successfully.", category='success')
+                return redirect(url_for('register'))
         return render_template("register.html", user=current_user)
     else:
         return render_template("register.html")
