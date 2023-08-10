@@ -24,6 +24,11 @@
     <link href="../static/css/bootstrap-icons.css" rel="stylesheet">
 
     <link href="../static/css/templatemo-topic-listing.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
 
     <script src="../static/js/asl.js"></script>
 
@@ -56,16 +61,17 @@ https://templatemo.com/tm-590-topic-listing
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-lg-5 me-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_1">Home</a>
+                            <a class="nav-link click-scroll" href="{{url_for('index')}}">Home</a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link click-scroll" href="#section_2">About Us</a>
                         </li>
-
+                        {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link click-scroll" href="#section_3">ASL ToolPage</a>
                         </li>
+                        {% endif %}
 
                         <li class="nav-item">
                             <a class="nav-link click-scroll" href="#section_4">Technnology</a>
@@ -86,10 +92,22 @@ https://templatemo.com/tm-590-topic-listing
                             </ul>
                         </li>
                     </ul>
-
-                    <div class="d-none d-lg-block">
-                        <a href="{{url_for('register')}}" class="navbar-icon bi-person smoothscroll"></a>
+                    {% if user.is_authenticated %}
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ user.name }}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ url_for('logout') }}">Log out</a>
+                        </div>
                     </div>
+                    {% else %}
+                    <div class="d-none d-lg-block">
+                        <a href="{{ url_for('register') }}" class="navbar-icon bi-box-arrow-in-right smoothscroll"></a>
+                    </div>
+                    {% endif %}
+
                 </div>
             </div>
         </nav>
@@ -114,7 +132,7 @@ https://templatemo.com/tm-590-topic-listing
 
                     <ul class="site-footer-links">
                         <li class="site-footer-link-item">
-                            <a href="#section_1" class="site-footer-link">Home</a>
+                            <a href="{{url_for('index')}}" class="site-footer-link">Home</a>
                         </li>
 
                         <li class="site-footer-link-item">
@@ -167,7 +185,7 @@ https://templatemo.com/tm-590-topic-listing
     <script src="../static/js/jquery.sticky.js"></script>
     <script src="../static/js/click-scroll.js"></script>
     <script src="../static/js/custom.js"></script>
-    <script src="../js/asl.js"></script>
+    <script src="../static/js/asl.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="../js/script.js"></script>
     <script>
@@ -178,6 +196,7 @@ https://templatemo.com/tm-590-topic-listing
             }
         }
     </script>
+
 </body>
 
 </html>

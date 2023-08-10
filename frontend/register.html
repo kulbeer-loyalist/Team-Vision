@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Register</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+{% extends "base.html" %} {% block title %}Register{% endblock %}
 
-
-</head>
-<body>
+{% block content %}
 <div class="box-form">
 	<div class="left">
 		<div class="overlay">
@@ -28,15 +20,13 @@
 
   <div class="right">
     <h5>Register</h5>
-    <form id="registerForm">
+    <form method="POST" id="registerForm">
       <div class="inputs">
-        <input type="text" id="fullName" placeholder="Full Name">
+        <input type="text" id="fullName" name="name" placeholder="Full Name">
         <br>
-        <input type="text" id="username" placeholder="Username">
+        <input type="email" id="email" name="email" placeholder="Email">
         <br>
-        <input type="email" id="email" placeholder="Email">
-        <br>
-        <input type="password" id="password" placeholder="Password">
+        <input type="password" id="password" name="password" placeholder="Password">
         <br>
         <input type="password" id="confirmPassword" placeholder="Confirm Password">
       </div>
@@ -211,45 +201,5 @@ label input[type="checkbox"] {
 </style>
 
 
-<script>
-  document.getElementById('registerForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission to avoid page reload
+{% endblock %}
 
-    // Get values from the input fields
-    const fullName = document.getElementById('fullName').value;
-    const username = document.getElementById('username').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-
-    // Perform basic validation (You can add more complex validation here)
-    if (fullName.trim() === '' || username.trim() === '' || email.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {
-      alert('Please fill in all fields.');
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      alert('Passwords do not match.');
-      return;
-    }
-
-    // Here, you can perform an AJAX request to send the registration data to the server for processing
-    // For demonstration purposes, we'll just log the values to the console
-    console.log('Full Name:', fullName);
-    console.log('Username:', username);
-    console.log('Email:', email);
-    console.log('Password:', password);
-
-    // Clear the form fields after submission (optional)
-    document.getElementById('fullName').value = '';
-    document.getElementById('username').value = '';
-    document.getElementById('email').value = '';
-    document.getElementById('password').value = '';
-    document.getElementById('confirmPassword').value = '';
-    // Redirect to the login page after successful registration
-    window.location.href = 'login.html';
-  });
-</script>
-
-</body>
-</html>

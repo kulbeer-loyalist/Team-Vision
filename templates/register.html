@@ -3,59 +3,276 @@
 
 {% block content %}
 <section class="hero-section justify-content-center align-items-center" id="section_1">
-  <div class="row justify-content-center">
-    <div class="col-lg-6">
-      {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
+  <div class="col-lg-6">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="flash-messages">
       {% for category, message in messages %}
-      {% set alert_id = 'alert_' ~ loop.index %} {# Add unique ID for each alert #}
+      {% set alert_id = 'alert_' ~ loop.index %}
       {% if category == 'error' %}
-      <div class="alert alert-danger alert-dismissible fade show" role="alert" id="{{ alert_id }}">
-        {{ message }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"
-          onclick="removeAlert('{{ alert_id }}')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      {% elif category == 'success' %}
-      <div class="alert alert-success alert-dismissible fade show" role="alert" id="{{ alert_id }}">
-        {{ message }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"
-          onclick="removeAlert('{{ alert_id }}')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+      {% set alert_class = 'alert-danger' %}
+      {% else %}
+      {% set alert_class = 'alert-success' %}
       {% endif %}
+      <div class="alert {{ alert_class }} alert-dismissible fade show small-alert" role="alert" id="{{ alert_id }}">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+          onclick="removeAlert('{{ alert_id }}')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <script>
+        setTimeout(function () {
+          var alertDiv = document.getElementById('{{ alert_id }}');
+          if (alertDiv) {
+            alertDiv.remove();
+          }
+        }, 5000); // 5000 milliseconds (5 seconds)
+      </script>
       {% endfor %}
-      {% endif %}
-      {% endwith %}
-      <div class="card shadow">
-        <div class="card-body">
-          <h2 class="card-title text-center mb-4">Register</h2>
-          <form method="POST" class="my-login-validation" novalidate="" id="registrationForm">
-            <div class="mb-3">
-              <label for="fullName" class="form-label">Full Name</label>
-              <input type="text" class="form-control" id="fullName" name="name" required>
+    </div>
+    {% endif %}
+    {% endwith %}
+    <style>
+      .flash-messages {
+        position: fixed;
+        top: 50px;
+        right: 10px;
+        z-index: 1000;
+      }
+
+      .small-alert {
+        padding: 5px 10px;
+        font-size: 14px;
+        max-width: 300px;
+      }
+    </style>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-12">
+      <div class="box-form">
+        <div class="left">
+          <div class="overlay">
+            <h1>ASL</h1>
+            <p>_________________________________________________________________________________________________________
+            </p>
+            <h2 class="text-center text-white">When Hands Move, Hearts Understand.</h2>
+            <h1>
+              <p> </p>
+            </h1>
+            <span>
+              <h3>Login with social media</h3>
+              <a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+              <a href="https://twitter.com/i/flow/login"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </span>
+          </div>
+        </div>
+
+        <div class="right">
+          <h1>Register</h1>
+          <div class="text-center mt-3">
+            <p>Already have an account? <a href="{{url_for('login')}}">Login</a></p>
+          </div>
+          <form method="POST" id="registerForm">
+            <div class="inputs">
+              <input type="text" id="fullName" name="name" placeholder="Full Name">
+              <br>
+              <input type="email" id="email" name="email" placeholder="Email">
+              <br>
+              <input type="password" id="password" name="password" placeholder="Password">
+              <br>
+              <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
             </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" name="password" required>
-            </div>
-            <div class="mb-3">
-              <label for="confirmPassword" class="form-label">Confirm Password</label>
-              <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Register</button>
+            <br><br>
+            <button type="submit">Sign Up</button>
           </form>
         </div>
+
       </div>
-      <div class="text-center mt-3">
-        <p style="color: #000;">Already have an account? <a href="{{url_for('login')}}">Log In</a></p>
-      </div>
+
+      <style>
+        body {
+          background-image: linear-gradient(135deg, #49a5cd 10%, #0d5f9d 100%);
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          font-family: "Open Sans", sans-serif;
+          color: #333333;
+        }
+
+        .box-form {
+          margin: 0 auto;
+          width: 80%;
+          background: #FFFFFF;
+          border-radius: 10px;
+          overflow: hidden;
+          display: flex;
+          flex: 1 1 100%;
+          align-items: stretch;
+          justify-content: space-between;
+          box-shadow: 0 0 20px 6px #090b6f85;
+        }
+
+        @media (max-width: 980px) {
+          .box-form {
+            flex-flow: wrap;
+            text-align: center;
+            align-content: center;
+            align-items: center;
+          }
+        }
+
+        .box-form div {
+          height: auto;
+        }
+
+        .box-form .left {
+          color: #FFFFFF;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-image: url("https://png.pngtree.com/background/20230524/original/pngtree-hand-holding-a-peace-sign-against-a-black-background-picture-image_2707985.jpg");
+          overflow: hidden;
+        }
+
+        .box-form .left .overlay {
+          padding: 30px;
+          width: 100%;
+          height: 100%;
+          background: #063c65ad;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .box-form .left .overlay h1 {
+          font-size: 10vmax;
+          line-height: 1;
+          font-weight: 900;
+          margin-top: 40px;
+          margin-bottom: 20px;
+        }
+
+        .box-form .left .overlay span p {
+          margin-top: 30px;
+          font-weight: 900;
+        }
+
+        .box-form .left .overlay span a {
+          background: #3b5998;
+          color: #FFFFFF;
+          margin-top: 10px;
+          padding: 14px 50px;
+          border-radius: 100px;
+          display: inline-block;
+          box-shadow: 0 3px 6px 1px #042d4657;
+        }
+
+        .box-form .left .overlay span a:last-child {
+          background: #1dcaff;
+          margin-left: 30px;
+        }
+
+        .box-form .right {
+          padding: 40px;
+          overflow: hidden;
+        }
+
+        @media (max-width: 980px) {
+          .box-form .right {
+            width: 100%;
+          }
+        }
+
+        .box-form .right h5 {
+          font-size: 6vmax;
+          line-height: 0;
+        }
+
+        .box-form .right p {
+          font-size: 14px;
+          color: #B0B3B9;
+        }
+
+        .box-form .right .inputs {
+          overflow: hidden;
+        }
+
+        .box-form .right input {
+          width: 100%;
+          padding: 10px;
+          margin-top: 25px;
+          font-size: 16px;
+          border: none;
+          outline: none;
+          border-bottom: 2px solid #B0B3B9;
+        }
+
+        .box-form .right .remember-me--forget-password {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .box-form .right .remember-me--forget-password input {
+          margin: 0;
+          margin-right: 7px;
+          width: auto;
+        }
+
+        .box-form .right button {
+          float: right;
+          color: #fff;
+          font-size: 16px;
+          padding: 12px 35px;
+          border-radius: 50px;
+          display: inline-block;
+          border: 0;
+          outline: 0;
+          box-shadow: 0px 4px 20px 0px #49c628a6;
+          background-image: linear-gradient(135deg, #70F570 10%, #49C628 100%);
+        }
+
+        label {
+          display: block;
+          position: relative;
+          margin-left: 30px;
+        }
+
+        label::before {
+          content: ' \f00c';
+          position: absolute;
+          font-family: FontAwesome;
+          background: transparent;
+          border: 3px solid #70F570;
+          border-radius: 4px;
+          color: transparent;
+          left: -30px;
+          transition: all 0.2s linear;
+        }
+
+        label:hover::before {
+          font-family: FontAwesome;
+          content: ' \f00c';
+          color: #fff;
+          cursor: pointer;
+          background: #70F570;
+        }
+
+        label:hover::before .text-checkbox {
+          background: #70F570;
+        }
+
+        label span.text-checkbox {
+          display: inline-block;
+          height: auto;
+          position: relative;
+          cursor: pointer;
+          transition: all 0.2s linear;
+        }
+
+        label input[type="checkbox"] {
+          display: none;
+        }
+      </style>
     </div>
   </div>
 </section>
