@@ -24,7 +24,7 @@ where it creats test environemnt for specified version and test all the specifie
 <b>11)</b>Path to read Yaml file and create directories src/ASLD_step2/utils</br>
 
 <b> Steps to  run the project </b>
-<ul>bash inint_setup.sh</ul>
+<ul>bash init_setup.sh</ul>
 <ul>check conda is activated or not</ul>
 <ul>manual activation, conda actiate ./env</ul>
 <ul>python path/to/app.py</ul>
