@@ -27,5 +27,5 @@ where it creats test environemnt for specified version and test all the specifie
 <ul>bash inint_setup.sh</ul>
 <ul>check conda is activated or not</ul>
 <ul>manual activation, conda actiate ./env</ul>
-<ul>pyhon path/to/app.py</ul>
+<ul>python path/to/app.py</ul>
 <ul>0.0.0.0:8002</ul>
