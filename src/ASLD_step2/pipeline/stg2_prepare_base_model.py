@@ -1,20 +1,18 @@
 from ASLD_step2.config import Configuration
-from ASLD_step2.components import DataIngestion
+from ASLD_step2.components import DataIngestion,PrepareBaseModel
 from ASLD_step2 import logging
 
 from ASLD_step2.Exception import ASLDException
 import sys
 
-STAGE_NAME = "Data Ingestion stage"
+
+STAGE_NAME = "Prepare base model"
 
 def main():
     config = Configuration()
-    data_ingestion_config = config.get_data_ingestion_config()
-    data_ingestion = DataIngestion(config = data_ingestion_config)
-    data_ingestion.download_file()
-    data_ingestion.check_and_extract_files()
-    data_ingestion.train_test_split()
-
+    prepare_base_model_config = config.get_prepare_base_model_config()
+    prepare_base_model = PrepareBaseModel(config=prepare_base_model_config)
+    prepare_base_model.create_base_model()
 
 if __name__ == '__main__':
     try:

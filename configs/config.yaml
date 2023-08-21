@@ -3,18 +3,27 @@ artifacts_root: artifacts
 
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  source_URL: https://download.microsoft.com/download/3/E/1/3E1C3F21-ECDB-4869-8368-6DEBA77B919F/kagglecatsanddogs_5340.zip
-  local_data_file: artifacts/data_ingestion/WLASL_videos.zip
-  unzip_dir: artifacts/data_ingestion
+  source_URL: kaggle_dataset_link
+  local_data_file: artifacts/data_ingestion/train_landmark_files.zip
+  unzip_dir: artifacts/data_ingestion/train_landmark_files
   train_dir: artifacts/data_ingestion/train
   test_dir: artifacts/data_ingestion/test
 
-data_validation:
-  message: str
+  
+
+prepare_base_model:
+  root_dir: artifacts/prepare_base_model
+  base_model_path: artifacts/prepare_base_model/base_model.h5  
 
 
-data_transformation:
-   root_dir: artifacts/data_transformation
-   transformed_train_dir: artifacts/data_transformation/train_dir
-   transformed_test_dir: artifacts/data_transformation/test_dir
-   preprocessed_object_file_path: artifacts/data_transformation 
+
+prepare_callbacks:
+  root_dir: artifacts/prepare_callbacks
+  tensorboard_root_log_dir: artifacts/prepare_callbacks/tensorboard_log_dir
+  checkpoint_model_filepath: artifacts/prepare_callbacks/checkpoint_dir/model.h5
+
+
+training:
+  root_dir: artifacts/training
+  trained_model_path: artifacts/training/model.h5
+    
