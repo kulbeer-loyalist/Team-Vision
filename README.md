@@ -28,4 +28,4 @@ where it creats test environemnt for specified version and test all the specifie
 <ul>check conda is activated or not</ul>
 <ul>manual activation, conda actiate ./env</ul>
 <ul>python path/to/app.py</ul>
-<ul>0.0.0.0:8002</ul>
+<ul>0.0.0.0:8001</ul>
