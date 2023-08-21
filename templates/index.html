@@ -192,12 +192,15 @@
                                 <video id="webcamPreview" autoplay playsinline></video>
                                 
                             <div id="resultSection" class="text-center">
-                                <button id="webcamButton" class="btn btn-primary">Enable Webcam</button>
+                                <button onclick="location.href='/handle_button'" class="btn btn-primary">Predict</button>
                                 <button id="captureButton" class="btn btn-primary">Capture</button>
                                 <button id="disableButton" class="btn btn-primary">Disable</button>
                                 <button id="predictButton" class="btn btn-primary">Predict</button>
+
+                                
                                 <h2 class="text-white text-center"> Result </h2>
                                 <p class="text-white text-center">Here is your result</p>
+
                         
                         </div>
                     </div>
@@ -368,5 +371,5 @@
         {% include 'footer.html' %}
 
 
-
+    
         {% endblock %}

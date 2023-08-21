@@ -10,5 +10,8 @@ python-box
 scikit-learn
 scipy
 fastparquet
-
+keytotext
+opencv-python
+flask
+mediapipe
 -e .

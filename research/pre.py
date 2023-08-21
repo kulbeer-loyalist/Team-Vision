@@ -8,8 +8,7 @@ mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 mp_holistic = mp.solutions.holistic
 
-import pandas as pd
-import numpy as np
+
 ROWS_PER_FRAME = 543
 
 def load_relevent_data_subset(pq_path):
@@ -86,7 +85,7 @@ async def do_capture_web_async():
     all_landmarks = []
 
     cap = cv2.VideoCapture(0)
-    xyz = pd.read_parquet('./2044/635217.parquet')
+    xyz = pd.read_parquet('635217.parquet')
     with mp_holistic.Holistic(min_detection_confidence=0.5,min_tracking_confidence=0.5) as holistic:
         frame = 0  
         while cap.isOpened():
@@ -187,6 +186,9 @@ def encoder_function(sign):
 def predict_and_print(landmark):
     # Load the model and get the prediction_fn
     interpreter = tf.lite.Interpreter(model_path="./model.tflite")
+
+    interpreter.allocate_tensors()
+    
     prediction_fn = interpreter.get_signature_runner("serving_default")
 
     # Perform prediction

@@ -1,0 +1,58 @@
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Holistic Human Classifier</title>
+  <meta charset="utf-8">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.css" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.1/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.1/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/holistic@0.1/holistic.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    
+    
+    
+    <video class="input_video"></video>
+    <canvas class="output_canvas" width="1280px" height="720px"></canvas>
+    <div class="loading">
+      <div class="spinner"></div>
+
+      </div>
+      
+    </div>
+
+  </div>
+  <div class="control-panel">
+    <button type="button" id="webcamButton" class="btn btn-primary">Enable Webcam</button>
+
+  </div>
+
+  <div class="disable-webcam-button">
+    <button style="position: absolute;top: 159px;
+    float: right;
+    right: 34px;"type="button" id="stopProcessingButton" class="btn btn-primary">Disable Webcam</button>
+  </div>
+  <script>
+    // Additional functions to handle button click and start detection
+
+    
+  </script>
+  <script src="script1.js"></script>
+
+  <script>
+    const webcamButton = document.getElementById('webcamButton');
+    webcamButton.addEventListener('click', function() {
+      webcamButton.style.display = 'none'; // Hide the button after clicking
+      startWebcamAndDetection();
+    });
+  </script>
+  
+</body>
+</html>
