@@ -22,3 +22,10 @@ where it creats test environemnt for specified version and test all the specifie
 <b>9)</b>Path to Logger src/ASLD_step2/logger</br>
 <b>10)</b>Path to Exception src/ASLD_step2/Exception</br>
 <b>11)</b>Path to read Yaml file and create directories src/ASLD_step2/utils</br>
+
+<b> Steps to  run the project </b>
+<ul>bash init_setup.sh</ul>
+<ul>check conda is activated or not</ul>
+<ul>manual activation, conda actiate ./env</ul>
+<ul>python path/to/app.py</ul>
+<ul>0.0.0.0:8002</ul>
